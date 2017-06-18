@@ -23,7 +23,7 @@ export default class NavBar extends React.Component {
 
     <div className="navbar-header col-sm-4 navbar-left">
 
-      <a className="navbar-brand" href="#">Hello World</a>
+      <a className="navbar-brand" href="#">Co-Chef</a>
           <form className="navbar-form">
               <div className="input-group input-group-sm">
                   <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
