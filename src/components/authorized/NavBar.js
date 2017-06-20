@@ -24,7 +24,7 @@ export default class NavBar extends React.Component {
     <div className="navbar-header col-sm-4 navbar-left">
 
       <a className="navbar-brand" href="#">Co-Chef</a>
-          <form className="navbar-form">
+          <form className="navbar-form text-center">
               <div className="input-group input-group-sm">
                   <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
                   <div className="input-group-btn">
@@ -37,25 +37,15 @@ export default class NavBar extends React.Component {
 
     <div className="collapse navbar-collapse">
       <ul className="nav navbar-nav navbar-right col-sm-4">
-          <li>
-              <img className="navbar-pp img-circle" id="ppnimage" src={this.props.ppurl} alt={this.props.firstName + this.props.lastName}/>
-          </li>
             <li>
-                <a href="/FriendList"><i className="glyphicon glyphicon-user" title="Friends & Requests"></i></a>
+                <a href="/addrecipe"><i className="glyphicon glyphicon-plus" title="Add Recipe"></i></a>
             </li>
             <li>
-                <a href="/Messages"><i className="glyphicon glyphicon-envelope" title="Messages"></i></a>
+                <a href="/profile"><i className="glyphicon glyphicon-user" title="My Profile"></i></a>
             </li>
             <li>
-                <a href="#"><i className="glyphicon glyphicon-globe" title="Online People"></i></a>
+                <a href="/logout"><i className="glyphicon glyphicon-log-out" title="Log Out"></i></a>
             </li>
-        <li className="dropdown">
-          <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i className="glyphicon glyphicon-menu-down" title="Menu"></i> <span className="caret"></span></a>
-          <ul className="dropdown-menu" role="menu">
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Logout</a></li>
-          </ul>
-        </li>
       </ul>
 
 

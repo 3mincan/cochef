@@ -1,6 +1,28 @@
+DROP TABLE IF EXISTS typeofgood;
 DROP TABLE IF EXISTS goods;
 DROP TABLE IF EXISTS ingredients;
 DROP TABLE IF EXISTS recipes;
+DROP TABLE IF EXISTS userinfo;
+
+CREATE TABLE userinfo (
+  user_id SERIAL PRIMARY KEY,
+  firstname VARCHAR(30) NOT NULL,
+  lastname VARCHAR(30) NOT NULL,
+  email VARCHAR(30) UNIQUE NOT NULL,
+  hashedPass VARCHAR(99) UNIQUE NOT NULL
+);
+
+CREATE TABLE typeofgood (
+  typeofgood_id SERIAL PRIMARY KEY,
+  typeofgood_name VARCHAR(30) UNIQUE NOT NULL,
+);
+
+INSERT INTO typeofgood
+    (typeofgood_id, typeofgood_name)
+VALUES
+    (1, "Dairy"),
+    (2, "Meat"),
+
 
 CREATE TABLE goods (
   good_id SERIAL PRIMARY KEY,

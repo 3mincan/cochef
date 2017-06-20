@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBarReg from './NavBarReg';
+import NavBarReg from './authorized/NavBarReg';
 import Filter from './Filter';
 import Footer from './Footer';
 import { hashHistory } from 'react-router';
