@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import NavBarReg from './NavBarReg';
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
 
 
 export default class ProfilePanel extends Component {
@@ -36,14 +37,14 @@ export default class ProfilePanel extends Component {
                     <div className="col-lg-10 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
                         <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                           <div className="list-group">
-                            <a href="#" className="list-group-item text-center">
+                            <Link to="#" className="list-group-item text-center">
                               <h4 className="glyphicon glyphicon-home"></h4><br/>
                               <h6>Personal Info</h6>
-                            </a>
-                            <a href="#" className="list-group-item active text-center">
+                            </Link>
+                            <Link to="#" className="list-group-item active text-center">
                               <h4 className="glyphicon glyphicon-star"></h4><br/>
                               <h6>Starred</h6>
-                            </a>
+                            </Link>
                           </div>
                         </div>
                         <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">

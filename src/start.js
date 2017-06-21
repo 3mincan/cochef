@@ -4,8 +4,11 @@ import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 're
 import axios from 'axios';
 import Welcome from './components/Welcome';
 import Contact from './components/Contact';
+import App from './components/authorized/App';
 import Profile from './components/authorized/Profile';
 import AddRecipe from './components/authorized/AddRecipe';
+import NotFound from './components/NotFound';
+
 
 const LoggedOutRouter = (
     <Router history={browserHistory}>
@@ -16,12 +19,12 @@ const LoggedOutRouter = (
 
 const LoggedInRouter = (
     <Router history={browserHistory}>
-        <Route path="/" component={Profile}>
+        <Route path="/" component={App}>
             <Route path="/profile" component={Profile}/>
             <Route path="/addrecipe" component={AddRecipe}/>
             <Route path="/contact" component={Contact}/>
         </Route>
-        <Route path="*" onEnter={(state, replace) => replace('/')} />
+        <Route path='*' component={NotFound} />
     </Router>
 )
 
