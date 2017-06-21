@@ -1,4 +1,3 @@
-$('#myModal').modal('show');
 
 $(document).ready(function() {
     $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {

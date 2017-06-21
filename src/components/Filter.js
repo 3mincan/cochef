@@ -10,8 +10,7 @@ export default class Filter extends React.Component {
 
     render() {
         return (
-        <div className="text-center">
-        <div className="panel panel-primary container-fluid col-lg-10 col-lg-offset-1">
+        <div className="text-center panel panel-primary container-fluid col-lg-10 col-lg-offset-1">
           <div className="panel-heading">
             <h3 className="panel-title">What do you have?</h3>
           </div>
@@ -50,7 +49,6 @@ export default class Filter extends React.Component {
       </div>
       <p className="help-block"></p>
         </div>
-    </div>
         );
     }
 }
