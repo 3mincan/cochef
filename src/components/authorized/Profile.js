@@ -8,7 +8,7 @@ export default class Profile extends Component {
     render () {
         return (
             <div>
-            <NavBarReg />
+            <NavBarReg loggedIn={true} />
             <ProfilePanel />
             <Footer />
             </div>

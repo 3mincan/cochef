@@ -79,6 +79,14 @@ app.post('/login', function(req, res){
     })
 });
 
+app.get('/login-status', function(req,res) {
+    if (req.session.user) {
+        res.json ({ loggedIn: true })
+    } else {
+        res.json ({ loggedIn: false })
+    }
+});
+
 app.post('/createNewUser', function(req, res){
     console.log('body for /createNewUser', req.body);
     db.getUserInfo(req.body).then(function(userInfo) {

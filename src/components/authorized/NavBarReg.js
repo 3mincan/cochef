@@ -20,8 +20,8 @@ export default class NavBarReg extends React.Component {
                         <a className="navbar-brand" href="/">Co-Chef</a>
                     </div>
                     <center>
-                        <LoggedInMenu />
-                        <LoggedOutMenu />
+                            {this.props.loggedIn && <LoggedInMenu />}
+                            {!this.props.loggedIn && <LoggedOutMenu />}
                     </center>
                 </div>
             </div>
