@@ -6,31 +6,30 @@ import {Link} from 'react-router';
 export default class Filter extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { typeofgood: '', nameofgood: '' };
+        this.state = { typeofgood: '', nameofgood: '', recipe:'' };
         this.renderTypeOfGood = this.renderTypeOfGood.bind(this);
-        this.getNameofGoods = this.getNameofGoods.bind(this)
+        this.getRecipes = this.getRecipes.bind(this);
     }
 
     componentDidMount() {
         axios.get('/getAllTypeofGoods').then((res) => {
-            console.log('All Type of Goods:', res.data.results);
+            // console.log('All Type of Goods:', res.data.results);
             this.setState({ typeofgood: res.data.results }, function() {
-                console.log('state.set', this.state.typeofgood);
+                // console.log('state.set', this.state.typeofgood);
             })
         })
-
-        // axios.get('/getNameofGoods').then((res) => {
-        //     console.log('All Name of Goods:', res.data.results);
-        //     this.setState({ nameofgood: res.data.results }, function() {
-        //         console.log('state.set', this.state.nameofgood);
-        //     })
-        // })
-
     }
 
-    getNameofGoods(e) {
-        console.log(this.state.nameofgood);
+    getRecipes(e) {
+        axios.get('/getrecipe').then((res) => {
+            console.log('All recipes:', res.data.results);
+            this.setState({ recipes: res.data.results }, function() {
+                // console.log('state.set', this.state.typeofgood);
+            })
+        })
     }
+
+
 
     renderTypeOfGood() {
         if(this.state.typeofgood) {
@@ -49,7 +48,7 @@ export default class Filter extends React.Component {
 
 
             return typesOfGood.map((item) => {
-                console.log(item);
+                // console.log(item);
                 return (
                     <div className="row">
                         <div className="panel-body col-lg-4">
@@ -70,7 +69,7 @@ export default class Filter extends React.Component {
 
     render() {
         return (
-            <div className="text-center panel panel-primary container-fluid col-lg-10 col-lg-offset-1">
+            <div className="text-center panel panel-primary container-fluid col-lg-6 col-lg-offset-3">
               <div className="panel-heading">
                 <h3 className="panel-title">What do you have?</h3>
               </div>
@@ -78,7 +77,7 @@ export default class Filter extends React.Component {
               {this.state.typeofgood && this.renderTypeOfGood()}
 
               <div className="row">
-                  <button type="submit" className="btn btn-primary">What can I cook?</button>
+                  <button type="submit" onClick={this.getRecipes} className="btn btn-primary">What can I cook?</button>
               </div>
               <p className="help-block"></p>
             </div>

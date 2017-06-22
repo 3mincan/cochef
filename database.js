@@ -74,7 +74,9 @@ const getUserProfileInfo = () => {
 const getTypeofGood = () => {
     return new Promise((resolve, reject) => {
         // const q = 'SELECT * FROM typeofgood;';
-        const q = 'SELECT * FROM typeofgood JOIN goods ON goods.typeofgood_id = typeofgood.typeofgood_id;';
+        const q = `SELECT * FROM typeofgood
+        JOIN goods
+        ON goods.typeofgood_id = typeofgood.typeofgood_id;`;
         db.query(q, []).then((result) => {
             resolve(result.rows);
         }).catch((err) => {
@@ -97,18 +99,20 @@ const getNameofGood = () => {
     });
 };
 
-const saveImageUrlToDb = (file, session) => {
-    return new Promise(function(resolve, reject) {
-        const q = 'UPDATE recipe SET imgurl = $1 WHERE id = $2 RETURNING ppurl;';
-        const params = [`/uploads/${file.filename}`, session.userId];
-        db.query(q, params).then(function(result) {
-            // MATT SAID THIS PROBABLY NEEDS TO BE result.rows
-            resolve(result);
-        }).catch(function(err) {
+const findRecipe = () => {
+    return new Promise((resolve, reject) => {
+        const q = `SELECT recipe_name
+        FROM ingredients
+        JOIN recipes
+        ON ingredients.recipe_id = recipes.recipe_id;
+        `;
+        db.query(q, []).then((result) => {
+            resolve(result.rows);
+        }).catch((err) => {
             reject(err);
-        });
-    });
-};
+        })
+    })
+}
 
 module.exports.getUserInfo = getUserInfo;
 module.exports.hashPass = hashPass;
@@ -117,4 +121,4 @@ module.exports.registerNewUser = registerNewUser;
 module.exports.getUserProfileInfo = getUserProfileInfo;
 module.exports.getTypeofGood = getTypeofGood;
 module.exports.getNameofGood = getNameofGood;
-module.exports.saveImageUrlToDb = saveImageUrlToDb;
+module.exports.findRecipe = findRecipe;

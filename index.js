@@ -79,6 +79,8 @@ app.post('/login', function(req, res){
     })
 });
 
+// getting profile info
+
 app.get('/profile-info', function(req, res) {
     db.getUserProfileInfo(req.body).then(function(profileInfo) {
         if (profileInfo) {
@@ -93,6 +95,8 @@ app.get('/profile-info', function(req, res) {
 })
 });
 
+// Search for tzpes of goods
+
 let typegood= [];
 
 app.get('/getAllTypeofGoods', (req, res) => {
@@ -105,6 +109,8 @@ app.get('/getAllTypeofGoods', (req, res) => {
         res.json({ error: true });
     });
 });
+
+// Search for good names
 
 let goodname= [];
 
@@ -119,6 +125,22 @@ app.get('/getNameofGoods', (req, res) => {
         res.json({ error: true });
     });
 });
+
+// Search for recipe
+
+let searchRecipe= [];
+
+app.get('/getrecipe', (req, res) => {
+    var recipeId = searchRecipe.map(item => item.recipe_id);
+    db.findRecipe(recipeId).then((recipeResults) => {
+        res.json({ results: recipeResults });
+    }).catch((err) => {
+        console.log(err);
+        res.json({ error: true });
+    });
+});
+
+// login status controller
 
 app.get('/login-status', function(req,res) {
     if (req.session.user) {
