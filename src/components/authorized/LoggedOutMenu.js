@@ -13,20 +13,20 @@ export default class LoggedOutMenu extends React.Component {
     }
 
     handleInput(e) {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         this.setState( {[e.target.name]: e.target.value} );
     }
 
     handleLoginSubmit(e) {
-        console.log('handleLoginSubmit initiated');
+        // console.log('handleLoginSubmit initiated');
         e.preventDefault();
         const userLoginInfo = {
             email: this.state.email,
             password: this.state.password
         }
-        console.log('userloginInfo', userLoginInfo);
+        // console.log('userloginInfo', userLoginInfo);
         axios.post('/login', userLoginInfo).then((result) => {
-            console.log('login was successful', result.data);
+            // console.log('login was successful', result.data);
             if (result.data.success) {
                 location.replace('/profile');
                 this.setState({ success: true })
@@ -34,7 +34,7 @@ export default class LoggedOutMenu extends React.Component {
                 this.setState({ error: 'Something went wrong.' });
             }
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
             this.setState({ error: 'Something went wrong.' });
         })
         }
@@ -42,13 +42,13 @@ export default class LoggedOutMenu extends React.Component {
         registerSubmit(e) {
             e.preventDefault();
             const {firstname, lastname, email, password} = this.state;
-            console.log('userloginInfo', {firstname, lastname, email, password});
+            // console.log('userloginInfo', {firstname, lastname, email, password});
             axios.post('/createNewUser', { firstname, lastname, email, password })
             .then(() => {
                 location.replace('/profile')
-                console.log('finishing up submit')
+                // console.log('finishing up submit')
             }).catch((error) => {
-                console.log(error);
+                // console.log(error);
             });
         }
 

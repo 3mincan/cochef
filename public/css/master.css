@@ -78,3 +78,8 @@ div.bhoechie-tab-content{
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
+
+.recipeimage {
+    height: 400px;
+    width: 100%;
+}

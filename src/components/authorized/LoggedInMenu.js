@@ -12,13 +12,13 @@ export default class LoggedInMenu extends React.Component {
         return (
               <ul className="nav navbar-nav navbar-right col-sm-4">
                     <li>
-                        <Link to="/addrecipe"><i className="glyphicon glyphicon-plus" title="Add Recipe"></i></Link>
+                        <Link to="/search"><i className="glyphicon glyphicon-search" title="Search"></i></Link>
                     </li>
                     <li>
                         <Link to="/profile"><i className="glyphicon glyphicon-user" title="My Profile"></i></Link>
                     </li>
                     <li>
-                        <Link to="/logout"><i className="glyphicon glyphicon-log-out" title="Log Out" onClick={this.handleClick}></i></Link>
+                        <a href="/logout"><i className="glyphicon glyphicon-log-out" title="Log Out" onClick={this.handleClick}></i></a>
                     </li>
               </ul>
         );

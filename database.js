@@ -57,82 +57,54 @@ const registerNewUser = (newUserInfo) => {
     });
 };
 
-const getUserProfileInfo = (requestedId) => {
-    return new Promise(function(resolve, reject) {
-        const q = 'SELECT * FROM userinfo WHERE id = $1;';
-        const params = [requestedId];
-        db.query(q, params).then(function(result) {
+const getUserProfileInfo = () => {
+    return new Promise((resolve, reject) => {
+        const q = 'SELECT firstname, lastname, email FROM userinfo;';
+        db.query(q, []).then((result) => {
             resolve(result);
-        }).catch(function(err) {
+        }).catch((err) => {
             reject(err);
         });
     });
 };
 
-const getManyProfileSummaries = (arrayOfIds) => {
-    return new Promise(function(resolve, reject) {
-        let counter = 0, profileSummaries = [];
-        for (var i = 0; i < arrayOfIds.length; i++) {
-            getUserProfileInfo(arrayOfIds[i]).then((infoResults) => {
-                profileSummaries.push({
-                    id: infoResults.rows[0].id,
-                    userUrl: `/user/${infoResults.rows[0].id}`,
-                    name: `${infoResults.rows[0].firstname} ${infoResults.rows[0].lastname}`,
-                    imageUrl: infoResults.rows[0].ppurl
-                });
-                counter++;
-                if (counter == arrayOfIds.length) {
-                    resolve(profileSummaries);
-                }
-            }).catch((err) => {
-                reject(err);
-            });
-        }
+// const getRecipe;
+// const searchRecipe;
+
+const getTypeofGood = () => {
+    return new Promise((resolve, reject) => {
+        // const q = 'SELECT * FROM typeofgood;';
+        const q = 'SELECT * FROM typeofgood JOIN goods ON goods.typeofgood_id = typeofgood.typeofgood_id;';
+        db.query(q, []).then((result) => {
+            resolve(result.rows);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
+const getNameofGood = () => {
+    return new Promise((resolve, reject) => {
+        const q = `SELECT good_id, good_name, typeofgood_name
+        FROM goods
+        JOIN typeofgood
+        ON goods.typeofgood_id = typeofgood.typeofgood_id;`;
+        db.query(q, []).then((result) => {
+            resolve(result.rows);
+        }).catch((err) => {
+            reject(err);
+        });
     });
 };
 
 const saveImageUrlToDb = (file, session) => {
     return new Promise(function(resolve, reject) {
-        const q = 'UPDATE userinfo SET ppurl = $1 WHERE id = $2 RETURNING ppurl;';
+        const q = 'UPDATE recipe SET imgurl = $1 WHERE id = $2 RETURNING ppurl;';
         const params = [`/uploads/${file.filename}`, session.userId];
         db.query(q, params).then(function(result) {
+            // MATT SAID THIS PROBABLY NEEDS TO BE result.rows
             resolve(result);
         }).catch(function(err) {
-            reject(err);
-        });
-    });
-};
-
-const updateUserAbout = (aboutText, session) => {
-    return new Promise(function(resolve, reject) {
-        const q = 'UPDATE userinfo SET about = $1 WHERE id = $2 RETURNING about;';
-        const params = [aboutText, session.userId];
-        db.query(q, params).then(function(result) {
-            resolve(result);
-        }).catch(function(err) {
-            reject(err);
-        });
-    });
-};
-
-const updateUserLocation = (locationText, session) => {
-    return new Promise(function(resolve, reject) {
-        const q = 'UPDATE userinfo SET location = $1 WHERE id = $2 RETURNING location;';
-        const params = [locationText, session.userId];
-        db.query(q, params).then(function(result) {
-            resolve(result);
-        }).catch(function(err) {
-            reject(err);
-        });
-    });
-};
-
-const getAllUserNames = () => {
-    return new Promise((resolve, reject) => {
-        const q = 'SELECT firstname, lastname, id FROM userinfo;';
-        db.query(q, []).then((result) => {
-            resolve(result);
-        }).catch((err) => {
             reject(err);
         });
     });
@@ -143,8 +115,6 @@ module.exports.hashPass = hashPass;
 module.exports.checkPass = checkPass;
 module.exports.registerNewUser = registerNewUser;
 module.exports.getUserProfileInfo = getUserProfileInfo;
-module.exports.getManyProfileSummaries = getManyProfileSummaries;
-module.exports.updateUserAbout = updateUserAbout;
-module.exports.updateUserLocation = updateUserLocation;
+module.exports.getTypeofGood = getTypeofGood;
+module.exports.getNameofGood = getNameofGood;
 module.exports.saveImageUrlToDb = saveImageUrlToDb;
-module.exports.getAllUserNames = getAllUserNames;

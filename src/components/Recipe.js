@@ -1,44 +1,14 @@
-return (
-    <div className="col-xs-3 jumbotron vertical-center">
-    <div className="panel panel-primary text-center ">
-      <div className="panel-heading">Create your Account</div>
-          <p className="help-block"></p>
-      <div className="panel-body">
-          <form className="form-horizontal" method="POST">
-              <div className="control-group">
-                  <div className="controls">
-                      <input type="text" onChange={props.handleChange} name="firstname" placeholder="First name" className="input-xlarge"/>
-                      <p className="help-block"></p>
-                  </div>
-              </div>
-              <div className="control-group">
-                  <div className="controls">
-                      <input type="text" id="lastname" onChange={props.handleChange} name="lastname" placeholder="Last name" className="input-xlarge"/>
-                      <p className="help-block"></p>
-                  </div>
-              </div>
+import React from 'react';
 
-              <div className="control-group">
-                  <div className="controls">
-                      <input type="email" id="email" onChange={props.handleChange} name="email" placeholder="E-Mail" className="input-xlarge"/>
-                      <p className="help-block"></p>
-                  </div>
-              </div>
+export default class Recipe extends React.Component {
 
-              <div className="control-group">
-                  <div className="controls">
-                      <input type="password" id="password" onChange={props.handleChange} name="password" placeholder="Password" className="input-xlarge"/>
-                      <p className="help-block"></p>
-                  </div>
-              </div>
-
-              <div className="control-group">
-                  <div className="controls">
-                      <button className="btn btn-primary" onClick={props.submit}>Register</button>
-                  </div>
-              </div>
-          </form>
-      </div>
-</div>
-</div>
-)
+    render() {
+        return (
+            <div className="panel panel-primary text-center container-fluid col-lg-8 col-lg-offset-2">
+              <div className="panel-heading">You can cook + recipe name</div>
+              <div className="panel-body"><a className="recipeimage" href="http://www.food.com/recipe/baked-chicken-111514"><img src="http://img.sndimg.com/food/image/upload/h_420,w_560,c_fit/v1/img/recipes/18/89/81/picGdB6S4.jpg" alt=""/></a></div>
+              <div className="panel-footer">You also need + ingredient / You've got all the ingredients</div>
+            </div>
+        );
+    }
+}

@@ -6,29 +6,29 @@ import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 're
 export default class ProfilePanel extends Component {
     constructor(props) {
         super(props);
+        this.state = { firstname:'', lastname:'', email:'' };
     }
 
-    // getInitialState: function() {
-    //   return {
-    //     jobs: []
-    //   }
-    // },
-    //
-    // componentDidMount: function() {
-    //   // Is there a React-y way to avoid rebinding `this`? fat arrow?
-    //   var th = this;
-    //   this.serverRequest =
-    //     axios.get(this.props.source)
-    //       .then(function(result) {
-    //         th.setState({
-    //           jobs: result.data.jobs
-    //         });
-    //       })
-    // },
-    //
-    // componentWillUnmount: function() {
-    //   this.serverRequest.abort();
-    // },
+    handleInput(e) {
+        // console.log(e.target.value);
+        this.setState( {[e.target.name]: e.target.value} );
+    }
+
+    handleGetProfileInfo(e) {
+        e.preventDefault();
+
+        const getUserProfileInfo = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            email: this.state.email,
+        }
+
+        axios.get('/profile-info', getUserProfileInfo).then((result) => {
+            if (result.data.success) {
+                res.json({ })
+            }
+        })
+    }
 
     render () {
         return (
@@ -58,25 +58,19 @@ export default class ProfilePanel extends Component {
                                           <div className="form-group">
                                               <label for="firstname" className="col-sm-2 control-label">First Name</label>
                                               <div className="col-sm-10">
-                                                  <input type="text" name="firstname" onChange={this.handleInput} className="form-control" placeholder="First Name" />
+                                                  <input type="text" name="firstname" onChange={this.handleInput} className="form-control" defaultValue="isim" />
                                               </div>
                                           </div>
                                           <div className="form-group">
                                               <label for="lastname" className="col-sm-2 control-label">Last Name</label>
                                               <div className="col-sm-10">
-                                                  <input type="text" name="lastname" onChange={this.handleInput} className="form-control" placeholder="Last Name" />
+                                                  <input type="text" name="lastname" onChange={this.handleInput} className="form-control" defaultValue="Last Name" />
                                               </div>
                                           </div>
                                           <div className="form-group">
                                               <label for="email" className="col-sm-2 control-label">E-mail</label>
                                               <div className="col-sm-10">
-                                                  <input type="email" name="email" onChange={this.handleInput} className="form-control" id="email" placeholder="E-mail" />
-                                              </div>
-                                          </div>
-                                          <div className="form-group">
-                                              <label for="password" className="col-sm-2 control-label">Password</label>
-                                              <div className="col-sm-10">
-                                                  <input type="password" name="password" onChange={this.handleInput} className="form-control" id="password" placeholder="Password" />
+                                                  <input type="email" name="email" onChange={this.handleInput} className="form-control" id="email" defaultValue="E-mail" />
                                               </div>
                                           </div>
                                           <div className="row">

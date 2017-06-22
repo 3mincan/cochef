@@ -52,7 +52,7 @@ app.post('/uploadCookPicture', requireAuth, uploader.single('file'), function(re
 
 app.post('/login', function(req, res){
     db.getUserInfo(req.body).then(function(userInfo) {
-        console.log('results from /login', userInfo);
+        // console.log('results from /login', userInfo);
         if (userInfo) {
             console.log('user is registered');
             db.hashPass(req.body.password)
@@ -79,6 +79,47 @@ app.post('/login', function(req, res){
     })
 });
 
+app.get('/profile-info', function(req, res) {
+    db.getUserProfileInfo(req.body).then(function(profileInfo) {
+        if (profileInfo) {
+            console.log('profile info receiving');
+        } else {
+            console.log('profile info could not received');
+            res.json({
+                success: false,
+                message:"user is not registered"
+        })
+    }
+})
+});
+
+let typegood= [];
+
+app.get('/getAllTypeofGoods', (req, res) => {
+    var typeIds = typegood.map(item => item.typeofgood_id);
+    var typeNames = typegood.map(item => item.typeofgood_name);
+    db.getTypeofGood(typeIds).then((typeResults) => {
+        res.json({ results: typeResults });
+    }).catch((err) => {
+        console.log(err);
+        res.json({ error: true });
+    });
+});
+
+let goodname= [];
+
+app.get('/getNameofGoods', (req, res) => {
+    var goodnameIds = goodname.map(item => item.good_id);
+    var goodNames = goodname.map(item => item.good_name);
+    console.log(goodnameIds);
+    db.getNameofGood(goodnameIds).then((goodResults) => {
+        res.json({ results: goodResults });
+    }).catch((err) => {
+        console.log(err);
+        res.json({ error: true });
+    });
+});
+
 app.get('/login-status', function(req,res) {
     if (req.session.user) {
         res.json ({ loggedIn: true })
@@ -88,13 +129,13 @@ app.get('/login-status', function(req,res) {
 });
 
 app.post('/createNewUser', function(req, res){
-    console.log('body for /createNewUser', req.body);
+    // console.log('body for /createNewUser', req.body);
     db.getUserInfo(req.body).then(function(userInfo) {
         if (!userInfo) {
-            console.log('user is already registered');
+            // console.log('user is already registered');
             res.json({alreadyRegistered: true});
         } else {
-            console.log('starting to create new user.');
+            // console.log('starting to create new user.');
             db.hashPass(req.body.password)
             .then(function(hash) {
                 var newUserInfo = {
@@ -105,7 +146,7 @@ app.post('/createNewUser', function(req, res){
                 };
                 db.registerNewUser(newUserInfo)
                 .then(() => {
-                    console.log('register new user successful');
+                    // console.log('register new user successful');
                     res.json({ success: true })
                 })
             })
