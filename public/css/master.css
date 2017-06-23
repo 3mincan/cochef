@@ -79,7 +79,12 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
 
-.recipeimage {
+.recipeimage img {
     height: 400px;
-    width: 100%;
+}
+
+.navbar-brand img {
+  height: 200%;
+  margin-top: -10px;
+  width: auto;
 }

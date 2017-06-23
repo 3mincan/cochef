@@ -99,14 +99,15 @@ const getNameofGood = () => {
     });
 };
 
-const findRecipe = () => {
+const findRecipe = (goodId) => {
     return new Promise((resolve, reject) => {
-        const q = `SELECT recipe_name
+        const q = `SELECT recipe_name, imgurl, url
         FROM ingredients
         JOIN recipes
-        ON ingredients.recipe_id = recipes.recipe_id;
+        ON ingredients.recipe_id = recipes.recipe_id
+        WHERE good_id = ANY ($1)
         `;
-        db.query(q, []).then((result) => {
+        db.query(q, [goodId]).then((result) => {
             resolve(result.rows);
         }).catch((err) => {
             reject(err);

@@ -13,7 +13,7 @@ export default class NotFound extends React.Component {
     render() {
         return (
             <div>
-                <NavBarReg loggedIn={true} />
+                <NavBarReg />
                 <div className="row text-center">
                     <div className="col-md-12">
                         <div className="error-template">

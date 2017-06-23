@@ -17,7 +17,7 @@ export default class NavBarReg extends React.Component {
             <div className="navbar navbar-inverse navbar-top">
                 <div className="container">
                     <div className="navbar-header">
-                        <a className="navbar-brand">Co-Chef</a>
+                        <a className="navbar-brand"><img src="/public/logo.png" alt=""/></a>
                     </div>
                     <center>
                             {this.props.loggedIn && <LoggedInMenu />}

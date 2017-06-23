@@ -65,7 +65,7 @@ export default class LoggedOutMenu extends React.Component {
                         </div>
                         <div className="modal-body">
                             <div className="row">
-                                <div className="col-md-8">
+                                <div className="col-md-8 col-md-offset-2">
                                     <ul className="nav nav-tabs">
                                         <li className="active"><a href="#Login" data-toggle="tab"><h6>Login</h6></a></li>
                                         <li><a href="#Registration" data-toggle="tab"><h6>Register</h6></a></li>
@@ -86,11 +86,9 @@ export default class LoggedOutMenu extends React.Component {
                                                 </div>
                                             </div>
                                             <div className="row">
-                                                <div className="col-sm-2">
-                                                </div>
+
                                                 <div className="col-sm-10">
                                                     <button type="submit" onClick={this.handleLoginSubmit} className="btn btn-primary btn-sm">Submit</button>
-                                                    <a href="javascript:;">Forgot your password?</a>
                                                 </div>
                                             </div>
                                             </form>
@@ -133,19 +131,7 @@ export default class LoggedOutMenu extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-4">
-                                    <div className="row text-center sign-with">
-                                        <div className="col-md-12">
-                                            <h5>Sign in with</h5>
-                                        </div>
-                                        <div className="col-md-12">
-                                            <div className="btn-group btn-group-justified">
-                                                <a href="/auth/facebook" className="btn btn-primary">Facebook</a>
-                                                <a href="#" className="btn btn-danger">Google</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -15,7 +15,8 @@ const LoggedOutRouter = (
     <Router history={browserHistory}>
         <Route path="/" component={Welcome}/>
         <Route path="/contact" component={Contact}/>
-        <Route path="/recipe" component={Recipe}/>
+        <Route path="/recipe/:id" component={Recipe}/>
+        <Route path='*' component={NotFound} />
     </Router>
 )
 
@@ -24,10 +25,10 @@ const LoggedInRouter = (
         <Route path="/" component={App}>
             <Route path="/search" component={Filter}/>
             <Route path="/profile" component={Profile}/>
-            <Route path="/recipe" component={Recipe}/>
+            <Route path="/recipe/:id" component={Recipe}/>
             <Route path="/contact" component={Contact}/>
+            <Route path='*' component={NotFound} />
         </Route>
-        <Route path='*' component={NotFound} />
     </Router>
 )
 

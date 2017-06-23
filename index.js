@@ -128,11 +128,8 @@ app.get('/getNameofGoods', (req, res) => {
 
 // Search for recipe
 
-let searchRecipe= [];
-
 app.get('/getrecipe', (req, res) => {
-    var recipeId = searchRecipe.map(item => item.recipe_id);
-    db.findRecipe(recipeId).then((recipeResults) => {
+    db.findRecipe(req.query.goodId.split(',')).then((recipeResults) => {
         res.json({ results: recipeResults });
     }).catch((err) => {
         console.log(err);
