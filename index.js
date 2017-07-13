@@ -141,7 +141,7 @@ app.get('/getrecipe', (req, res) => {
 
 app.get('/login-status', function(req,res) {
     if (req.session.user) {
-        res.json ({ loggedIn: true })
+        res.json ({ loggedIn: true });
     } else {
         res.json ({ loggedIn: false })
     }
