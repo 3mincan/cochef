@@ -1,13 +1,13 @@
-#Co-Chef
+# Co-Chef
 
 Co-Chef is a productivity tool for your kitchen. When you have a good that you don't know what to do, Co-Chef guides you. For example, on main page click for the goods that you have and press filter button, Co-Chef shows you that recipes you can cook with that good.
 
-##Getting Started
+## Getting Started
 
 This repository is ready to use. MVP is working. There's just sample recipes and goods. It also contains registration component.
 
 
-##Built With
+## Built With
 
 * React JS
 * Bootstrap JS
@@ -18,24 +18,24 @@ This repository is ready to use. MVP is working. There's just sample recipes and
 
 Also used some npm packages (like body parser, csurf, multer, bcrypt), you can find all of them in package.json.
 
-##Missing Parts
+## Missing Parts
 - Starring recipes
 
-##Screenshots
+## Screenshots
 
-###Main Page
+### Main Page
 ![Main Page](readme/main1.png)
 
 ![Main Page](readme/main2.png)
 
-###Results
+### Results
 ![Results Page](readme/results1.png)
 
-###Login
+### Login
 ![Login Page](readme/login1.png)
 
-###Profile Page
+### Profile Page
 ![Profile Page](readme/profile1.png)
 
-##License
+## License
 This project is licensed under the MIT License - see the LICENSE.txt file for details.
