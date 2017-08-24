@@ -10,7 +10,6 @@ This repository is ready to use. MVP is working. There's just sample recipes and
 ## Built With
 
 * React JS
-* Bootstrap JS
 * Bootstrap CSS
 * Node.js
 * Express.js
